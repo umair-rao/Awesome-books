@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="./scripts/script.js" type="module"></script>
 	<title>Awesome Books</title>
 </head>
 <body>
@@ -12,13 +13,19 @@
 	</header>
 	<main>
 		<div class="books-collection">
-
 		</div>
 		<div class="add-book">
-			
+			<form>
+				<label for="title">title</label>
+				<input type="text" id="title" name="title" placeholder="title" />
+				<br />
+				<label for="author">title</label>
+				<input type="text" id="author" name="author" placeholder="author" />
+                 <br />
+
+				<button type="submit">Add</button>
+			</form>
 		</div>
 	</main>
-
-<script src="script.js"></script>
 </body>
 </html>
