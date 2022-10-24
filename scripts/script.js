@@ -1,15 +1,21 @@
-let collection = [
-  {
-    id: '1',
-    title: 'Lorem ipsum',
-    author: 'Testeroo Testyy',
-  },
-  {
-    id: '2',
-    title: 'Lorem ipsum',
-    author: 'Testeroo Testyy',
-  },
-];
+let collection = [];
+
+function localStorageAvailablity() {
+  try {
+    localStorage.getItem('x', 'test');
+    localStorage.removeItem('x');
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
+if (localStorageAvailablity()) {
+  const books = JSON.parse(localStorage.getItem('books'));
+  if (books) {
+    collection = books;
+  }
+}
 
 function generateBookItem(book) {
   return `
@@ -34,29 +40,11 @@ function generateBookCollection(collection) {
 
 function removeBook(id) {
   collection = collection.filter((b) => b.id !== id);
-}
 
-function addBook(book) {
-  let format = {...book, id: String(Math.random())};
-  collection.push(format);
-  render();
-}
-
-const formBook = document.querySelector('.addBook');
-
-formBook.addEventListener('submit',(event)=> {
-  event.preventDefault();
-  const {title, author} = formBook.elements;
-  if (title.value && author.value) {
-    const book =  {
-      title: title.value,
-      author: author.value,
-    };
-    addBook(book);
-    title.value = '';
-    author.value = '';
+  if (localStorageAvailablity()) {
+    localStorage.setItem('books', JSON.stringify(collection));
   }
-});
+}
 
 function render() {
   const bookConatiner = document.querySelector('.books-collection');
@@ -74,3 +62,29 @@ function render() {
 }
 
 window.addEventListener('load', render);
+
+function addBook(book) {
+  const format = { ...book, id: String(Math.random()) };
+  collection.push(format);
+  render();
+
+  if (localStorageAvailablity()) {
+    localStorage.setItem('books', JSON.stringify(collection));
+  }
+}
+
+const formBook = document.querySelector('.addBook');
+
+formBook.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const { title, author } = formBook.elements;
+  if (title.value && author.value) {
+    const book = {
+      title: title.value,
+      author: author.value,
+    };
+    addBook(book);
+    title.value = '';
+    author.value = '';
+  }
+});
