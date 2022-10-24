@@ -36,6 +36,28 @@ function removeBook(id) {
   collection = collection.filter((b) => b.id !== id);
 }
 
+function addBook(book) {
+  let format = {...book, id: String(Math.random())};
+  collection.push(format);
+  render();
+}
+
+const formBook = document.querySelector('.addBook');
+
+formBook.addEventListener('submit',(event)=> {
+  event.preventDefault();
+  const {title, author} = formBook.elements;
+  if (title.value && author.value) {
+    const book =  {
+      title: title.value,
+      author: author.value,
+    };
+    addBook(book);
+    title.value = '';
+    author.value = '';
+  }
+});
+
 function render() {
   const bookConatiner = document.querySelector('.books-collection');
   bookConatiner.replaceChildren('');
