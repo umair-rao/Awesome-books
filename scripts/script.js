@@ -1,21 +1,8 @@
-let collection = [];
+import Collection from './book.js';
 
-function localStorageAvailablity() {
-  try {
-    localStorage.getItem('x', 'test');
-    localStorage.removeItem('x');
-    return true;
-  } catch (err) {
-    return false;
-  }
-}
+const collection = new Collection();
 
-if (localStorageAvailablity()) {
-  const books = JSON.parse(localStorage.getItem('books'));
-  if (books) {
-    collection = books;
-  }
-}
+collection.getBooks();
 
 function generateBookItem(book) {
   return `
@@ -38,24 +25,16 @@ function generateBookCollection(collection) {
   `;
 }
 
-function removeBook(id) {
-  collection = collection.filter((b) => b.id !== id);
-
-  if (localStorageAvailablity()) {
-    localStorage.setItem('books', JSON.stringify(collection));
-  }
-}
-
 function render() {
   const bookConatiner = document.querySelector('.books-collection');
   bookConatiner.replaceChildren('');
-  const books = generateBookCollection(collection);
+  const books = generateBookCollection(collection.books);
   bookConatiner.insertAdjacentHTML('beforeend', books);
 
   const removeBtns = document.querySelectorAll('.remove-book');
   removeBtns.forEach((btn) => {
     btn.addEventListener('click', (event) => {
-      removeBook(event.target.id);
+      collection.remove(event.target.id);
       render();
     });
   });
@@ -63,17 +42,8 @@ function render() {
 
 window.addEventListener('load', render);
 
-function addBook(book) {
-  const format = { ...book, id: String(Math.random()) };
-  collection.push(format);
-  render();
-
-  if (localStorageAvailablity()) {
-    localStorage.setItem('books', JSON.stringify(collection));
-  }
-}
-
 const formBook = document.querySelector('.addBook');
+console.log(formBook);
 
 formBook.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -83,7 +53,8 @@ formBook.addEventListener('submit', (event) => {
       title: title.value,
       author: author.value,
     };
-    addBook(book);
+    collection.add(book);
+    render();
     title.value = '';
     author.value = '';
   }
