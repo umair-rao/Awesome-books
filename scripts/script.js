@@ -4,11 +4,10 @@ const collection = new Collection();
 
 collection.getBooks();
 
-function generateBookItem(book) {
+function generateBookItem(book, index) {
   return `
-  <li>
-    <p>${book.title}</p>
-    <p>${book.author}</p>
+  <li class=${index % 2 === 0? "even": "odd"}>
+    <p>${book.title} by ${book.author}</p>
     <button id=${book.id} class="remove-book">Remove</button>
   </li>
   `;
@@ -17,11 +16,11 @@ function generateBookItem(book) {
 function generateBookCollection(collection) {
   let items = '';
 
-  collection.forEach((book) => {
-    items += generateBookItem(book);
+  collection.forEach((book, index) => {
+    items += generateBookItem(book, index);
   });
   return `
-    <ul>${items}</ul>
+    <ul class="books-list">${items}</ul>
   `;
 }
 
