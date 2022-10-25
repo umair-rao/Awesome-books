@@ -6,7 +6,7 @@ collection.getBooks();
 
 function generateBookItem(book, index) {
   return `
-  <li class=${index % 2 === 0? "even": "odd"}>
+  <li class=${index % 2 === 0 ? 'even' : 'odd'}>
     <p>${book.title} by ${book.author}</p>
     <button id=${book.id} class="remove-book">Remove</button>
   </li>
@@ -42,7 +42,6 @@ function render() {
 window.addEventListener('load', render);
 
 const formBook = document.querySelector('.addBook');
-console.log(formBook);
 
 formBook.addEventListener('submit', (event) => {
   event.preventDefault();
