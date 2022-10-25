@@ -1,27 +1,13 @@
-let collection = [];
+import Collection from './book.js';
 
-function localStorageAvailablity() {
-  try {
-    localStorage.getItem('x', 'test');
-    localStorage.removeItem('x');
-    return true;
-  } catch (err) {
-    return false;
-  }
-}
+const collection = new Collection();
 
-if (localStorageAvailablity()) {
-  const books = JSON.parse(localStorage.getItem('books'));
-  if (books) {
-    collection = books;
-  }
-}
+collection.getBooks();
 
-function generateBookItem(book) {
+function generateBookItem(book, index) {
   return `
-  <li>
-    <p>${book.title}</p>
-    <p>${book.author}</p>
+  <li class=${index % 2 === 0 ? 'even' : 'odd'}>
+    <p>${book.title} by ${book.author}</p>
     <button id=${book.id} class="remove-book">Remove</button>
   </li>
   `;
@@ -30,48 +16,30 @@ function generateBookItem(book) {
 function generateBookCollection(collection) {
   let items = '';
 
-  collection.forEach((book) => {
-    items += generateBookItem(book);
+  collection.forEach((book, index) => {
+    items += generateBookItem(book, index);
   });
   return `
-    <ul>${items}</ul>
+    <ul class="books-list">${items}</ul>
   `;
-}
-
-function removeBook(id) {
-  collection = collection.filter((b) => b.id !== id);
-
-  if (localStorageAvailablity()) {
-    localStorage.setItem('books', JSON.stringify(collection));
-  }
 }
 
 function render() {
   const bookConatiner = document.querySelector('.books-collection');
   bookConatiner.replaceChildren('');
-  const books = generateBookCollection(collection);
+  const books = generateBookCollection(collection.books);
   bookConatiner.insertAdjacentHTML('beforeend', books);
 
   const removeBtns = document.querySelectorAll('.remove-book');
   removeBtns.forEach((btn) => {
     btn.addEventListener('click', (event) => {
-      removeBook(event.target.id);
+      collection.remove(event.target.id);
       render();
     });
   });
 }
 
 window.addEventListener('load', render);
-
-function addBook(book) {
-  const format = { ...book, id: String(Math.random()) };
-  collection.push(format);
-  render();
-
-  if (localStorageAvailablity()) {
-    localStorage.setItem('books', JSON.stringify(collection));
-  }
-}
 
 const formBook = document.querySelector('.addBook');
 
@@ -83,7 +51,8 @@ formBook.addEventListener('submit', (event) => {
       title: title.value,
       author: author.value,
     };
-    addBook(book);
+    collection.add(book);
+    render();
     title.value = '';
     author.value = '';
   }

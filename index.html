@@ -4,26 +4,28 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./styles/style.css">
 	<script src="./scripts/script.js" type="module"></script>
 	<title>Awesome Books</title>
 </head>
 <body>
 	<header>
-		<h1>Awesome books</h1>
+		<h1 class="heading">All awesome books</h1>
 	</header>
 	<main>
 		<div class="books-collection">
 		</div>
 		<div class="add-book">
 			<form class="addBook">
-				<label for="title">Title</label>
+				<h2>Add a new book</h2>
+				<label for="title" hidden>Title</label>
 				<input type="text" id="title" name="title" placeholder="title" />
 				<br />
-				<label for="author">Author</label>
+				<label for="author" hidden>Author</label>
 				<input type="text" id="author" name="author" placeholder="author" />
                  <br />
 
-				<button type="submit">Add</button>
+				<button id="add-btn" type="submit">Add</button>
 			</form>
 		</div>
 	</main>

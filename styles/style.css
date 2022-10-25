@@ -1,3 +1,52 @@
 * {
   margin: 0;
 }
+
+header {
+  margin-top: 30px;
+}
+
+.heading {
+  text-align: center;
+}
+
+.books-collection {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.books-list {
+  padding: 0;
+  border: 2px solid black;
+  width: 25%;
+}
+
+.books-list li {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 7px;
+}
+
+.even {
+  background-color: #ccd6e1;
+}
+
+.add-book {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+}
+
+.add-book input {
+  margin: 5px;
+  border: 2px solid black;
+}
+
+#add-btn {
+  margin-top: 10px;
+  margin-left: 140px;
+  background: transparent;
+  cursor: pointer;
+}
