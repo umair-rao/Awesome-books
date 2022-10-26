@@ -32,11 +32,6 @@
   cursor: pointer;
 }
 
-.pages button:hover {
-  color: rgb(17, 183, 248);
-  transition: 0.2s;
-}
-
 #add-new {
   border-right: 2px solid black;
   border-left: 2px solid black;
@@ -51,7 +46,7 @@ header {
 }
 
 .books-collection {
-  display: flex;
+  display: none;
   justify-content: center;
   width: 100%;
 }
@@ -74,7 +69,7 @@ header {
 }
 
 .add-book {
-  display: flex;
+  display: none;
   padding: 10px;
   justify-content: center;
 }
@@ -92,7 +87,7 @@ header {
 }
 
 .contact {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -116,5 +111,13 @@ header {
   font-size: 20px;
   font-weight: bold;
   padding-left: 10px;
+}
+
+.show {
+  display: flex;
+}
+
+.btn-show {
+  color: blue;
 }
 
