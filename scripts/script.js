@@ -92,3 +92,7 @@ contactBtn.addEventListener('click', () => {
   listBtn.classList.remove('btn-show');
   addBtn.classList.remove('btn-show');
 });
+
+const time = document.querySelector('.date-time');
+const now = new Date();
+time.textContent = `${now}`;

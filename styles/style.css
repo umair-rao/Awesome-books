@@ -121,3 +121,8 @@ header {
   color: blue;
 }
 
+.date-time {
+  text-align: end;
+  padding-right: 15px;
+  font-size: 14px;
+}
