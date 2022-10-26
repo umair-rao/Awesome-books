@@ -57,3 +57,42 @@ formBook.addEventListener('submit', (event) => {
     author.value = '';
   }
 });
+
+const bookCollection = document.querySelector('.books-collection');
+const contact = document.querySelector('.contact');
+const formConatiner = document.querySelector('.add-book');
+
+const listBtn = document.getElementById('list');
+const addBtn = document.getElementById('add-new');
+const contactBtn = document.getElementById('contact');
+
+listBtn.addEventListener('click', () => {
+  bookCollection.classList.add('show');
+  formConatiner.classList.remove('show');
+  contact.classList.remove('show');
+  listBtn.classList.add('btn-show');
+  addBtn.classList.remove('btn-show');
+  contactBtn.classList.remove('btn-show');
+});
+
+addBtn.addEventListener('click', () => {
+  formConatiner.classList.add('show');
+  bookCollection.classList.remove('show');
+  contact.classList.remove('show');
+  addBtn.classList.add('btn-show');
+  listBtn.classList.remove('btn-show');
+  contactBtn.classList.remove('btn-show');
+});
+
+contactBtn.addEventListener('click', () => {
+  contact.classList.add('show');
+  bookCollection.classList.remove('show');
+  formConatiner.classList.remove('show');
+  contactBtn.classList.add('btn-show');
+  listBtn.classList.remove('btn-show');
+  addBtn.classList.remove('btn-show');
+});
+
+const time = document.querySelector('.date-time');
+const now = new Date();
+time.textContent = `${now}`;

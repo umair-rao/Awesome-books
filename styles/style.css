@@ -2,6 +2,41 @@
   margin: 0;
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid black;
+  margin: 10px 15px 5px;
+  height: 40px;
+  align-items: center;
+}
+
+.nav-heading {
+  padding-left: 10px;
+}
+
+.pages ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.pages li {
+  padding: 5px;
+}
+
+.pages button {
+  background: transparent;
+  border: none;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#add-new {
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+}
+
 header {
   margin-top: 30px;
 }
@@ -11,7 +46,7 @@ header {
 }
 
 .books-collection {
-  display: flex;
+  display: none;
   justify-content: center;
   width: 100%;
 }
@@ -34,7 +69,7 @@ header {
 }
 
 .add-book {
-  display: flex;
+  display: none;
   padding: 10px;
   justify-content: center;
 }
@@ -49,4 +84,45 @@ header {
   margin-left: 140px;
   background: transparent;
   cursor: pointer;
+}
+
+.contact {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+}
+
+.conatct-description {
+  margin-top: 30px;
+}
+
+.conatct-description ul {
+  margin-top: 20px;
+}
+
+.footer {
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin: 10px 15px 5px;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 10px;
+}
+
+.show {
+  display: flex;
+}
+
+.btn-show {
+  color: blue;
+}
+
+.date-time {
+  text-align: end;
+  padding-right: 15px;
+  font-size: 14px;
 }
