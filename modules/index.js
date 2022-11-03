@@ -1,19 +1,18 @@
+import { DateTime } from '../node_modules/luxon/src/luxon.js';
 import Collection from './book.js';
 
 const collection = new Collection();
 
 collection.getBooks();
 
-function generateBookItem(book, index) {
-  return `
+const generateBookItem = (book, index) => `
   <li class=${index % 2 === 0 ? 'even' : 'odd'}>
     <p>${book.title} by ${book.author}</p>
     <button id=${book.id} class="remove-book">Remove</button>
   </li>
   `;
-}
 
-function generateBookCollection(collection) {
+const generateBookCollection = (collection) => {
   let items = '';
 
   collection.forEach((book, index) => {
@@ -22,9 +21,9 @@ function generateBookCollection(collection) {
   return `
     <ul class="books-list">${items}</ul>
   `;
-}
+};
 
-function render() {
+const render = () => {
   const bookConatiner = document.querySelector('.books-collection');
   bookConatiner.replaceChildren('');
   const books = generateBookCollection(collection.books);
@@ -37,7 +36,7 @@ function render() {
       render();
     });
   });
-}
+};
 
 window.addEventListener('load', render);
 
@@ -93,6 +92,10 @@ contactBtn.addEventListener('click', () => {
   addBtn.classList.remove('btn-show');
 });
 
-const time = document.querySelector('.date-time');
-const now = new Date();
-time.textContent = `${now}`;
+const displayTime = () => {
+  const timeHolder = document.querySelector('.date-time');
+  timeHolder.textContent = DateTime.now()
+    .setZone('system').toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS);
+};
+
+displayTime();

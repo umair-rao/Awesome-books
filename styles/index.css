@@ -123,6 +123,8 @@ header {
 
 .date-time {
   text-align: end;
+  top: 100px;
+  right: 50px;
   padding-right: 15px;
-  font-size: 14px;
+  font-size: 16px;
 }
