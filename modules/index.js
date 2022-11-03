@@ -1,4 +1,4 @@
-import { DateTime } from '../node_modules/luxon/src/luxon.js';
+import displayTime from './dispalyTime.js';
 import Collection from './book.js';
 
 const collection = new Collection();
@@ -91,11 +91,5 @@ contactBtn.addEventListener('click', () => {
   listBtn.classList.remove('btn-show');
   addBtn.classList.remove('btn-show');
 });
-
-const displayTime = () => {
-  const timeHolder = document.querySelector('.date-time');
-  timeHolder.textContent = DateTime.now()
-    .setZone('system').toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS);
-};
 
 displayTime();
