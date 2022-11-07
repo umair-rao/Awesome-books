@@ -28,9 +28,10 @@ npm install
 * Twitter: [@AbdessittirHar1](https://twitter.com/AbdessittirHar1)
 * LinkedIn: [Abdessittir Harkati](https://www.linkedin.com/in/abdessittir-harkati-a61b7324a/)
 
-* GitHub: [@Umair](https://github.com/Abdessittir)
-* Twitter: [@Umair](https://twitter.com/AbdessittirHar1)
-* LinkedIn: [Umair](https://www.linkedin.com/in/abdessittir-harkati-a61b7324a/)
+- Name: Muhammad Umair Muqeem
+- GitHub: [@umair-rao](https://github.com/umair-rao)
+- Twitter: [@umair_ra0](https://twitter.com/umair_ra0)
+- LinkedIn:(https://www.linkedin.com/in/engr-umair-muqeem/)
 
 ## Contributing
 
